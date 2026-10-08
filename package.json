@@ -24,9 +24,30 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:markdown-footnotes.tidyFootnotes",
+    "onCommand:markdown-footnotes.insertNamedFootnote",
+    "onCommand:markdown-footnotes.insertAutoNumberedFootnote"
+  ],
   "contributes": {
-    "markdown.markdownItPlugins": true
+    "markdown.markdownItPlugins": true,
+    "commands": [
+      {
+        "command": "markdown-footnotes.tidyFootnotes",
+        "title": "Tidy Footnotes",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdown-footnotes.insertNamedFootnote",
+        "title": "Insert Named Footnote",
+        "category": "Markdown"
+      },
+      {
+        "command": "markdown-footnotes.insertAutoNumberedFootnote",
+        "title": "Insert Auto-Numbered Footnote",
+        "category": "Markdown"
+      }
+    ]
   },
   "main": "./dist/extension.js",
   "browser": "./dist/extension.js",
