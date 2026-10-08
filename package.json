@@ -1,6 +1,6 @@
 {
   "name": "markdown-footnotes",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "displayName": "Markdown Footnotes",
   "description": "Adds [^footnote] syntax support to VS Code's built-in markdown preview",
   "keywords": [
@@ -47,13 +47,21 @@
         "title": "Insert Auto-Numbered Footnote",
         "category": "Markdown"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "markdown-footnotes.insertAutoNumberedFootnote",
+        "key": "alt+0",
+        "when": "editorTextFocus && editorLangId == markdown"
+      }
     ]
   },
   "main": "./dist/extension.js",
   "browser": "./dist/extension.js",
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "esbuild  src/extension.js --format=cjs --bundle --minify --outfile=dist/extension.js"
+    "compile": "esbuild src/extension.js --format=cjs --bundle --minify --external:vscode --outfile=dist/extension.js",
+    "test": "node --test"
   },
   "devDependencies": {
     "@types/vscode": "^1.60",

@@ -14,7 +14,7 @@ Adds \[^1] footnote syntax support to VS Code's built-in Markdown preview
 - Adds support for \[^1] syntax to VS Code's built-in markdown preview
 - Run **Markdown: Tidy Footnotes** from the Command Palette to number numeric footnotes in the order their references appear. The command updates matching definitions and sorts adjacent definition blocks. Named footnotes stay as they are.
 - Run **Markdown: Insert Named Footnote** to enter a name and insert its reference at the cursor. If that name already has a definition, the command reuses it.
-- Run **Markdown: Insert Auto-Numbered Footnote** to insert a numeric reference. Its number is one greater than the last numbered footnote in the document.
+- Run **Markdown: Insert Auto-Numbered Footnote** to insert a numeric reference. Its number is one greater than the last numbered footnote in the document. In a Markdown editor, the default shortcut is **Alt+0**.
 
 # Use locally without publishing
 
