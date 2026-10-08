@@ -1,6 +1,7 @@
 # Change Log
 
-## Unreleased
+## 0.2.0 - October 8, 2026
+- Repository forked.
 - Add the **Markdown: Tidy Footnotes** command to renumber numeric footnotes and order adjacent definitions.
 - Add commands to insert named and auto-numbered footnotes.
 
