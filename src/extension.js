@@ -1,7 +1,7 @@
 'use strict'
 
 const { tidyFootnotes } = require('./tidyFootnotes.cjs');
-const { insertFootnote } = require('./insertFootnote.cjs');
+const { insertFootnote, validateFootnoteName } = require('./insertFootnote.cjs');
 
 async function insertAtCursor(editor, vscode, label, reuseDefinition) {
     if (editor.document.languageId !== 'markdown') return;
@@ -34,13 +34,7 @@ export function activate(context) {
         const label = await vscode.window.showInputBox({
             prompt: 'Footnote name',
             placeHolder: 'source',
-            validateInput(value) {
-                const name = value.trim();
-                if (!name) return 'Enter a footnote name.';
-                if (/^[0-9]+$/.test(name)) return 'Use Insert Auto-Numbered Footnote for numeric labels.';
-                if (/[\[\]\r\n]/.test(name)) return 'Footnote names cannot contain brackets or line breaks.';
-                return undefined;
-            }
+            validateInput: validateFootnoteName
         });
         if (label !== undefined) return insertAtCursor(editor, vscode, label.trim(), true);
     }));

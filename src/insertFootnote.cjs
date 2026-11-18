@@ -18,4 +18,17 @@ function insertFootnote(text, offset, label, options = {}) {
     return { text: result, cursorOffset: result.length, label: name };
 }
 
-module.exports = { insertFootnote };
+// 이름 있는 각주의 라벨을 검증하고, 쓸 수 없는 이름이면 안내 문구를 돌려준다.
+// markdown-it-footnote는 공백이 들어간 라벨을 각주로 인식하지 않는다.
+// https://github.com/markdown-it/markdown-it-footnote/blob/3.0.3/index.js#L106
+function validateFootnoteName(value) {
+    const name = value.trim();
+
+    if (!name) return 'Enter a footnote name.';
+    if (/^[0-9]+$/.test(name)) return 'Use Insert Auto-Numbered Footnote for numeric labels.';
+    if (/[\[\]\s]/.test(name)) return 'Footnote names cannot contain spaces, brackets, or line breaks.';
+
+    return undefined;
+}
+
+module.exports = { insertFootnote, validateFootnoteName };
